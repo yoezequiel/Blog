@@ -4,9 +4,7 @@ import sqlite3
 from config import SECRET_KEY
 
 app = Flask(__name__)
-app = Flask(__name__, static_url_path='/static')
 app.secret_key = SECRET_KEY  # Clave secreta para la sesión
-
 Markdown(app)
 
 # Función para obtener la conexión a la base de datos
@@ -36,7 +34,7 @@ def index():
 
             cursor.execute('''
                 CREATE TABLE IF NOT EXISTS articles (
-                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     title TEXT NOT NULL,
                     content TEXT NOT NULL,
                     image TEXT
@@ -57,12 +55,11 @@ def index():
 
             return render_template('index.html', articles=latest_articles, message=message)
 
-        except Error as e:
+        except sqlite3.Error as e:
             print(e)
             return "Error en la conexión a la base de datos"
     else:
         return "Error en la conexión a la base de datos"
-
 
 @app.route('/articles')
 def view_all_articles():
@@ -79,12 +76,11 @@ def view_all_articles():
 
             return render_template('all_articles.html', articles=all_articles)
 
-        except Error as e:
+        except sqlite3.Error as e:
             print(e)
             return "Error en la conexión a la base de datos"
     else:
         return "Error en la conexión a la base de datos"
-
 
 @app.route('/article/<int:article_id>')
 def view_article(article_id):
@@ -93,7 +89,7 @@ def view_article(article_id):
         try:
             cursor = conn.cursor()
 
-            cursor.execute("SELECT * FROM articles WHERE id = %s", (article_id,))
+            cursor.execute("SELECT * FROM articles WHERE id = ?", (article_id,))
             article = cursor.fetchone()
 
             cursor.close()
@@ -101,12 +97,11 @@ def view_article(article_id):
 
             return render_template('article.html', article=article)
 
-        except Error as e:
+        except sqlite3.Error as e:
             print(e)
             return "Error en la conexión a la base de datos"
     else:
         return "Error en la conexión a la base de datos"
-
 
 @app.route('/search')
 def search():
@@ -117,7 +112,7 @@ def search():
         try:
             cursor = conn.cursor()
 
-            cursor.execute("SELECT * FROM articles WHERE title LIKE %s", ('%' + keyword + '%',))
+            cursor.execute("SELECT * FROM articles WHERE title LIKE ?", ('%' + keyword + '%',))
             articles = cursor.fetchall()
 
             cursor.close()
@@ -125,12 +120,11 @@ def search():
 
             return render_template('search.html', articles=articles)
 
-        except Error as e:
+        except sqlite3.Error as e:
             print(e)
             return "Error en la conexión a la base de datos"
     else:
         return "Error en la conexión a la base de datos"
-
 
 @app.route('/create_article', methods=['GET', 'POST'])
 def create_article():
@@ -150,7 +144,7 @@ def create_article():
                     cursor = conn.cursor()
 
                     # Insertar el artículo en la base de datos
-                    cursor.execute("INSERT INTO articles (title, content, image) VALUES (%s, %s, %s)",
+                    cursor.execute("INSERT INTO articles (title, content, image) VALUES (?, ?, ?)",
                                 (title, content, image.filename if image else None))
                     conn.commit()
 
@@ -159,28 +153,25 @@ def create_article():
 
                     return "Artículo creado exitosamente"
 
-                except Error as e:
+                except sqlite3.Error as e:
                     print(e)
                     return "Error en la conexión a la base de datos"
             else:
                 return "Error en la conexión a la base de datos"
 
-        except Error as e:
+        except sqlite3.Error as e:
             print(e)
             return "Error en la conexión a la base de datos"
 
     return render_template('create_article.html')
 
-
 @app.route('/cursos')
 def cursos():
     return render_template('cursos.html')
 
-
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
-
 
 if __name__ == '__main__':
     app.run()
