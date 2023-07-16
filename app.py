@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
 from flaskext.markdown import Markdown
-import mysql.connector
-from mysql.connector import Error
-from config import SECRET_KEY, DB_CONFIG
+import sqlite3
+from config import SECRET_KEY
 
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -13,11 +12,19 @@ Markdown(app)
 # Función para obtener la conexión a la base de datos
 def get_db_connection():
     try:
-        conn = mysql.connector.connect(**DB_CONFIG)
+        conn = sqlite3.connect('blog.db')
         return conn
-    except Error as e:
+    except sqlite3.Error as e:
         print(e)
         return None
+
+def create_database():
+    conn = get_db_connection()
+    if conn is not None:
+        conn.close()
+
+# Llamada a la función create_database() para crear la base de datos si no existe
+create_database()
 
 # Rutas
 @app.route('/')
