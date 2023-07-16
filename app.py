@@ -126,7 +126,7 @@ def search():
     else:
         return "Error en la conexión a la base de datos"
 
-@app.route('/create_article', methods=['GET', 'POST'])
+@app.route('/create_article_yoezequiel_011358', methods=['GET', 'POST'])
 def create_article():
     if request.method == 'POST':
         try:

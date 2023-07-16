@@ -1,11 +1,22 @@
 .article {
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(230, 227, 227, 0.2);
+    box-shadow: 0 2px 4px rgba(251, 251, 251, 0.934);
     transition: transform 0.2s ease-in-out;
-    background-color: rgb(53, 53, 78);
+    background-color: rgb(51, 65, 85);
+    border-radius: 5px;
 }
 
 .article:hover {
     transform: scale(1.05);
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: 350;
+}
+
+a:hover{
+    color: white;
 }
