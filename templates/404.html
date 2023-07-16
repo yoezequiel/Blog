@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Error 404 - Página no encontrada{% endblock %}
+
+{% block content %}
+        
+<style>
+    .containerr {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+        background-color: darkblue;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+    h1 {
+        color: #555;
+    }
+    p {
+        color: #777;
+    }
+    a {
+        color: #0080ff;
+        text-decoration: none;
+    }
+</style>
+    <body>
+        <div class="containerr">
+            <h1>Error 404 - Página no encontrada</h1>
+            <p>
+                Lo sentimos, la página que estás buscando no se encuentra
+                disponible.
+            </p>
+            <p>Puedes regresar a <a href="/">página principal</a>.</p>
+        </div>
+    </body>
+{% endblock %}

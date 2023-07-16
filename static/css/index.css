@@ -1,0 +1,11 @@
+.article {
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(230, 227, 227, 0.2);
+    transition: transform 0.2s ease-in-out;
+    background-color: rgb(53, 53, 78);
+}
+
+.article:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(25, 41, 79);
+    color: white;
+    text-align: center;
+}
+
+nav{
+    border-radius: 100px;
+    margin: 10px;
+}
+
+@media screen and (max-width: 480px) {
+    nav{
+        border-radius: 0px;
+        margin: 0px;
+}
+}

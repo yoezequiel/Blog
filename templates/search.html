@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog - Busqueda{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Resultados de búsqueda</h1>
+    {% if articles %}
+        {% for article in articles %}
+            <div>
+                <h2>{{ article[1] }}</h2>
+                <p>{{ article[2] }}</p>
+                <img src="{{ url_for('static', filename='images/' + article[3]) }}" alt="Imagen del artículo">
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No se encontraron artículos que coincidan con la palabra clave.</p>
+    {% endif %}
+</body>
+</html>
+{% endblock %}
