@@ -8,13 +8,142 @@ pre {
     line-height: 1.4;
     background-color: #333;
 }
-body{
+
+body {
     text-align: left;
 }
-#title{
+
+#title {
     text-align: center;
 }
 
-p{
+p {
     font-size: 20px;
+}
+
+/* Estilos para el modo de lectura */
+
+html .modo-lectura{
+    background-color: #111;
+}
+
+
+.modo-lectura #container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.modo-lectura body {
+    background-color: #222;
+    color: #ddd;
+    font-family: Arial, sans-serif;
+}
+
+.modo-lectura #container {
+    background-color: #222;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modo-lectura h1,
+.modo-lectura h2,
+.modo-lectura h3,
+.modo-lectura h4,
+.modo-lectura h5,
+.modo-lectura h6 {
+    color: #fff;
+}
+
+.modo-lectura a {
+    color: #ffcc00;
+}
+
+.modo-lectura a:hover {
+    color: #ffea80;
+}
+
+.modo-lectura ul,
+.modo-lectura ol {
+    padding-left: 20px;
+}
+
+.modo-lectura img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+.modo-lectura p,
+.modo-lectura li {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modo-lectura pre {
+    background-color: #333;
+    color: #ddd;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.modo-lectura code {
+    color: #ffcc00;
+}
+
+.modo-lectura table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.modo-lectura th,
+.modo-lectura td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #666;
+}
+
+.modo-lectura th {
+    background-color: #444;
+}
+
+.modo-lectura blockquote {
+    border-left: 4px solid #ffcc00;
+    padding-left: 15px;
+    margin: 10px 0;
+    color: #aaa;
+}
+
+.modo-lectura input,
+.modo-lectura textarea,
+.modo-lectura select,
+.modo-lectura button {
+    background-color: #444;
+    color: #ddd;
+    border: 1px solid #666;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.modo-lectura button {
+    cursor: pointer;
+}
+
+/* Estilos básicos para el botón */
+.modo-lectura-btn {
+    background-color: #333;
+    color: #ddd;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos al pasar el cursor sobre el botón */
+.modo-lectura-btn:hover {
+    background-color: #555;
 }
