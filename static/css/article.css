@@ -1,3 +1,4 @@
+/* Estilos para el modo normal */
 pre {
     background-color: #f4f4f4;
     border: 1px solid #ccc;
@@ -22,28 +23,21 @@ p {
 }
 
 /* Estilos para el modo de lectura */
-
-html .modo-lectura{
-    background-color: #111;
+.modo-lectura {
+    background-color: #121316;
 }
-
 
 .modo-lectura #container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #1E2025;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-
 
 .modo-lectura body {
-    background-color: #222;
     color: #ddd;
-    font-family: Arial, sans-serif;
-}
-
-.modo-lectura #container {
-    background-color: #222;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: sans-serif;
 }
 
 .modo-lectura h1,
@@ -82,7 +76,6 @@ html .modo-lectura{
 }
 
 .modo-lectura pre {
-    background-color: #333;
     color: #ddd;
     padding: 10px;
     overflow-x: auto;
@@ -146,4 +139,8 @@ html .modo-lectura{
 /* Estilos al pasar el cursor sobre el botón */
 .modo-lectura-btn:hover {
     background-color: #555;
+}
+
+.modo-lectura .navbar {
+    display: none;
 }
