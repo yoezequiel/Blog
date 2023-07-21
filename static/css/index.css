@@ -1,22 +1,32 @@
 .article {
-    padding: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(251, 251, 251, 0.934);
-    transition: transform 0.2s ease-in-out;
-    background-color: rgb(51, 65, 85);
-    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 8px;
+    max-width: 800px; 
+    margin: 0 auto; 
 }
+
 
 .article:hover {
     transform: scale(1.05);
 }
 
-a{
+
+#a {
+    display: block;
     text-decoration: none;
     color: white;
-    font-weight: 350;
+    font-weight: 400;
+    background-color: rgb(51, 65, 85);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    padding: 12px 20px;
+    border-radius: 5px;
+    width: 100%; 
 }
 
-a:hover{
-    color: white;
+
+#a:hover {
+    background-color: rgb(41, 55, 75);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
