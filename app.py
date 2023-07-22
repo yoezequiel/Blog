@@ -165,9 +165,9 @@ def create_article():
 
     return render_template('create_article.html')
 
-@app.route('/cursos')
-def cursos():
-    return render_template('cursos.html')
+@app.route('/tutoriales')
+def tutoriales():
+    return render_template('tutoriales.html')
 
 @app.errorhandler(404)
 def page_not_found(error):
