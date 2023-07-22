@@ -68,7 +68,7 @@ def view_all_articles():
         try:
             cursor = conn.cursor()
 
-            cursor.execute("SELECT * FROM articles")
+            cursor.execute("SELECT * FROM articles ORDER BY id DESC")
             all_articles = cursor.fetchall()
 
             cursor.close()
