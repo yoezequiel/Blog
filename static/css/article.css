@@ -23,6 +23,15 @@ p {
     font-size: 20px;
 }
 
+span{
+    background-color: #ffcc00;
+    border-radius: 30px;
+    padding: 6px;
+    color: black;
+    font-weight: 500;
+}
+
+
 /* Estilos para el modo de lectura */
 .modo-lectura {
     background-color: #121316;

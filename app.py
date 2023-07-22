@@ -19,6 +19,17 @@ def get_db_connection():
 def create_database():
     conn = get_db_connection()
     if conn is not None:
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS articles (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                content TEXT NOT NULL,
+                image TEXT,
+                type TEXT NOT NULL,
+                tags TEXT
+            )
+        ''')
+        conn.commit()
         conn.close()
 
 # Llamada a la función create_database() para crear la base de datos si no existe
@@ -32,34 +43,28 @@ def index():
         try:
             cursor = conn.cursor()
 
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS articles (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    title TEXT NOT NULL,
-                    content TEXT NOT NULL,
-                    image TEXT
-                )
-            ''')
-            conn.commit()
-
-            cursor.execute("SELECT * FROM articles ORDER BY id DESC LIMIT 5")
+            cursor.execute("SELECT * FROM articles WHERE type='article' ORDER BY id DESC LIMIT 5")
             latest_articles = cursor.fetchall()
+
+            cursor.execute("SELECT * FROM articles WHERE type='tutorial' ORDER BY id DESC LIMIT 5")
+            latest_tutorials = cursor.fetchall()
 
             cursor.close()
             conn.close()
 
-            if len(latest_articles) == 0:
+            if len(latest_articles) == 0 and len(latest_tutorials) == 0:
                 message = "No hay artículos publicados aún"
             else:
                 message = ""
 
-            return render_template('index.html', articles=latest_articles, message=message)
+            return render_template('index.html', articles=latest_articles, tutorials=latest_tutorials, message=message)
 
         except sqlite3.Error as e:
             print(e)
             return "Error en la conexión a la base de datos"
     else:
         return "Error en la conexión a la base de datos"
+
 
 @app.route('/articles')
 def view_all_articles():
@@ -68,13 +73,34 @@ def view_all_articles():
         try:
             cursor = conn.cursor()
 
-            cursor.execute("SELECT * FROM articles ORDER BY id DESC")
+            cursor.execute("SELECT * FROM articles WHERE type='article' ORDER BY id DESC")
             all_articles = cursor.fetchall()
 
             cursor.close()
             conn.close()
 
             return render_template('all_articles.html', articles=all_articles)
+
+        except sqlite3.Error as e:
+            print(e)
+            return "Error en la conexión a la base de datos"
+    else:
+        return "Error en la conexión a la base de datos"
+
+@app.route('/tutoriales')
+def view_all_tutorials():
+    conn = get_db_connection()
+    if conn:
+        try:
+            cursor = conn.cursor()
+
+            cursor.execute("SELECT * FROM articles WHERE type='tutorial' ORDER BY id DESC")
+            all_tutorials = cursor.fetchall()
+
+            cursor.close()
+            conn.close()
+
+            return render_template('all_tutorials.html', tutorials=all_tutorials)
 
         except sqlite3.Error as e:
             print(e)
@@ -132,6 +158,8 @@ def create_article():
         try:
             title = request.form['title']
             content = request.form['content']
+            article_type = request.form['type']  # New field for article type
+            tags = request.form['tags']  # New field for article tags
             image = request.files.get('image')  # Usamos get() en lugar de ['image'] para obtener el archivo opcionalmente
 
             if image:
@@ -144,8 +172,8 @@ def create_article():
                     cursor = conn.cursor()
 
                     # Insertar el artículo en la base de datos
-                    cursor.execute("INSERT INTO articles (title, content, image) VALUES (?, ?, ?)",
-                                (title, content, image.filename if image else None))
+                    cursor.execute("INSERT INTO articles (title, content, image, type, tags) VALUES (?, ?, ?, ?, ?)",
+                                (title, content, image.filename if image else None, article_type, tags))
                     conn.commit()
 
                     cursor.close()
@@ -164,10 +192,6 @@ def create_article():
             return "Error en la conexión a la base de datos"
 
     return render_template('create_article.html')
-
-@app.route('/tutoriales')
-def tutoriales():
-    return render_template('tutoriales.html')
 
 @app.errorhandler(404)
 def page_not_found(error):

@@ -5,14 +5,27 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 
-    <h1>Últimos artículos</h1>
-    {% if message %}
-        <p>{{ message }}</p>
-    {% else %}
-        {% for article in articles %}
-            <div class="article">
-                <h2><a id="a" href="{{ url_for('view_article', article_id=article[0]) }}">{{ article[1] }}</a></h2>
-            </div>
-        {% endfor %}
-    {% endif %}
+<h1>Últimos artículos</h1>
+{% if articles %}
+    {% for article in articles %}
+    <div class="article">
+        <h2><a id="a" href="{{ url_for('view_article', article_id=article[0]) }}">{{ article[1] }}</a></h2>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No hay artículos publicados</p>
+{% endif %}
+
+
+<h1>Últimos Tutoriales</h1>
+{% if tutorials %}
+    {% for tutorial in tutorials %}
+    <div class="article">
+        <h2><a id="a" href="{{ url_for('view_article', article_id=tutorial[0]) }}">{{ tutorial[1] }}</a></h2>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No hay tutoriales publicados</p>
+{% endif %}
+
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog - Tutoriales{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+<body>
+    <h1>Todos los Tutoriales</h1>
+    {% for tutorial in tutorials %}
+        <div class="article">
+            <h2><a id="a" href="{{ url_for('view_article', article_id=tutorial[0]) }}">{{ tutorial[1] }}</a></h2>
+        </div>
+    {% endfor %}
+</body>
+</html>
+{% endblock %}
