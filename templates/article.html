@@ -11,8 +11,8 @@
         <br>
         <h1 id="title">{{ article[1] }}</h1>
         <hr>
-        <span class="tag">{{ article[5] | markdown}}</span>
-        <img src="{{ url_for('static', filename='images/' + (article[3] if article[3] else 'default.jpg')) }}" alt="">
+        {{ article[5] | markdown}}
+        <center><img src="{{ url_for('static', filename='images/' + (article[3] if article[3] else 'default.png')) }}" alt=""></center>
         <p>{{ article[2] | markdown }}</p>
     </div>
 </body>

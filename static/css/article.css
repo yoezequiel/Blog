@@ -23,6 +23,10 @@ p {
     font-size: 20px;
 }
 
+p img{
+    border-radius: 30px;
+}
+
 
 /* Estilos para el modo de lectura */
 .modo-lectura {
@@ -148,5 +152,9 @@ p {
 }
 
 .modo-lectura .tag{
+    display: none;
+}
+
+.modo-lectura img{
     display: none;
 }
