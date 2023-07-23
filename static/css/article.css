@@ -23,14 +23,6 @@ p {
     font-size: 20px;
 }
 
-.tag{
-    background-color: #ffcc00;
-    border-radius: 30px;
-    padding: 6px;
-    color: black;
-    font-weight: 500;
-}
-
 
 /* Estilos para el modo de lectura */
 .modo-lectura {
@@ -152,5 +144,9 @@ p {
 }
 
 .modo-lectura .navbar {
+    display: none;
+}
+
+.modo-lectura .tag{
     display: none;
 }
