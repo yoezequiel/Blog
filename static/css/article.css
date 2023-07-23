@@ -23,7 +23,7 @@ p {
     font-size: 20px;
 }
 
-span{
+.tag{
     background-color: #ffcc00;
     border-radius: 30px;
     padding: 6px;
