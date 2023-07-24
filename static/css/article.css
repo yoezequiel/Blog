@@ -31,6 +31,7 @@ p img{
 /* Estilos para el modo de lectura */
 .modo-lectura {
     background-color: #121316;
+    transition: background-color 0.3s ease;
 }
 
 .modo-lectura #container {
@@ -39,6 +40,7 @@ p img{
     padding: 20px;
     background-color: #1E2025;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease;
 }
 
 .modo-lectura body {
