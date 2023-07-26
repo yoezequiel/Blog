@@ -1,10 +1,8 @@
 from flask import Flask, render_template, request
 from flaskext.markdown import Markdown
 import sqlite3
-from config import SECRET_KEY
 
 app = Flask(__name__)
-app.secret_key = SECRET_KEY  # Clave secreta para la sesión
 Markdown(app)
 
 # Función para obtener la conexión a la base de datos
