@@ -1,3 +1,0 @@
-services:
-    - name: yoezequiel-blog
-      startCommand: gunicorn app:app
