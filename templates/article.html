@@ -11,9 +11,9 @@
         <br>
         <h1 id="title">{{ article[1] }}</h1>
         <hr>
-        {{ article[5] | markdown}}
+        {{ markdown2.markdown(article[5]) | safe }}
         <center><img src="{{ url_for('static', filename='images/' + (article[3] if article[3] else 'default.png')) }}" alt=""></center>
-        <p>{{ article[2] | markdown }}</p>
+        <p>{{ markdown2.markdown(article[2]) | safe }}</p>
     </div>
 </body>
 <script src="{{ url_for('static', filename='js/article.js') }}"></script>

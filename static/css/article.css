@@ -1,4 +1,3 @@
-/* Estilos para el modo normal */
 pre {
     background-color: #f4f4f4;
     border: 1px solid #ccc;
@@ -23,12 +22,11 @@ p {
     font-size: 20px;
 }
 
-p img{
+p img {
     border-radius: 30px;
 }
 
 
-/* Estilos para el modo de lectura */
 .modo-lectura {
     background-color: #121316;
     transition: background-color 0.3s ease;
@@ -132,7 +130,6 @@ p img{
     cursor: pointer;
 }
 
-/* Estilos básicos para el botón */
 .modo-lectura-btn {
     background-color: #333;
     color: #ddd;
@@ -144,7 +141,6 @@ p img{
     transition: background-color 0.3s ease;
 }
 
-/* Estilos al pasar el cursor sobre el botón */
 .modo-lectura-btn:hover {
     background-color: #555;
 }
@@ -153,10 +149,10 @@ p img{
     display: none;
 }
 
-.modo-lectura .tag{
+.modo-lectura .tag {
     display: none;
 }
 
-.modo-lectura img{
+.modo-lectura img {
     display: none;
 }
