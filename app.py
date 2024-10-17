@@ -1,13 +1,17 @@
 from flask import Flask, render_template, request
 import markdown2
 import sqlite3
+import os
 
 app = Flask(__name__)
 
 
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "blog.db")
+
+
 def get_db_connection():
     try:
-        conn = sqlite3.connect("blog.db")
+        conn = sqlite3.connect(DB_PATH)
         return conn
     except sqlite3.Error as e:
         print(e)
